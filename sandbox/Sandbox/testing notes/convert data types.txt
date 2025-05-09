@@ -12,3 +12,9 @@
         // numbers can be converted to strings
         int number3 = 42;
         string textVersion = number3.ToString();
+
+        //((int)variable) is called casting or type casting. Used when variable is already a number, like float, double, or decimal.
+
+        //int.Parse(variable) is called parsing. Used when variable is a string, like "93" or "93.57".
+
+        

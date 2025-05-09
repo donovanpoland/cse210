@@ -1,0 +1,14 @@
+
+//In C#, the % operator is the remainder (or “modulus”) operator. It computes the remainder after dividing one number by another.
+
+//using casting or parsing when trying to get a remainder of a number
+        // Case 1
+        double percentage = 93.57;
+        int lastDigit = ((int)percentage) % 10;   //Output: 3
+
+        // Case 2
+        string percentageStr = "93";
+        int lastDigit = int.Parse(percentageStr) % 10;  //Output: 3
+
+        string badStr = "93.57";
+        int lastDigit = int.Parse(badStr) % 10;   //Throws FormatException
