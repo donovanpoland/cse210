@@ -1,0 +1,14 @@
+
+
+// You cant change the data type of a variable once declared but can store it in a new variable and convert the original variable
+        string valueInText = "42";
+        int number = int.Parse(valueInText);
+
+        //user input can be converted from a string to a number but if the user does not input a number the program will have a Runtime Exception error.
+        Console.Write("What is your favorite number? ");
+        string userInput = Console.ReadLine();
+        int number2 = int.Parse(userInput);
+
+        // numbers can be converted to strings
+        int number3 = 42;
+        string textVersion = number3.ToString();

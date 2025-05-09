@@ -1,5 +1,14 @@
 //Rules
         Console.WriteLine("Rules:");
-        Console.WriteLine("in C# end all statements must end with ' ; ' or you will get an error");
-        Console.WriteLine("Indentation does not mater but is convention to keep code clean, all code blocks will be contained in () or {} or []");
-        Console.WriteLine("Convention in C# is to put the curly braces {} on their own lines");
+
+        //in C# end all statements must end with ' ; ' or you will get an error"
+
+        //Indentation does not mater but is convention to keep code clean, all code blocks will be contained in () or {} or []"
+
+        //Convention in C# is to put the curly braces {} on their own lines"
+
+        //variable naming convention is camel case ex: firstName, lastName"
+
+        //Variables cannot change data types after being declared but can be converted.
+
+        //user input will always be a string and must be converted it needed for math
