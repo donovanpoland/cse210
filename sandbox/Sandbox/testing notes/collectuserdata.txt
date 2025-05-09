@@ -1,0 +1,16 @@
+//Collect data from user
+        //prompt or label
+        Console.WriteLine("Ask your question here?");
+        //store the response in a variable - Variables explanation below
+        //no text can go inside ReadLine function
+        string answer = Console.ReadLine();
+        //You can place your variable inside the WriteLine() function directly
+        Console.WriteLine(answer);
+        //or you can add text in 2 different ways
+        Console.WriteLine("Your answer is: " + answer);// add the plus sign to 'concatenate' or combine the string of your console text and the variable together
+        //or you can use a formatter inside your console text using $ before your double quotes and {variable} inside your double quotes
+        Console.WriteLine($"Your answer is: {answer}");
+
+//Variables are great when used for math
+        int math = number + secondNumber;
+        Console.WriteLine($"{number} + {secondNumber} = {math}");

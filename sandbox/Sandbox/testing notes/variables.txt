@@ -1,0 +1,20 @@
+//Variables
+        Console.WriteLine("Variables must be declared with a type.");
+        Console.WriteLine("Variables types include: int, string, float, double, decimal, bool");
+        Console.WriteLine("int - Integers (whole numbers, positive and negative)");
+        Console.WriteLine("string - Strings (a sequence of characters, including letters, numbers, or symbols)");
+        Console.WriteLine("float - Floating point numbers (numbers that use decimals)");
+        Console.WriteLine("double - Double precision floating point numbers " + //Continue text on next line using "text" + "text" to 'add' the 2 strings together
+         " (just like a float, except it takes up twice as much memory, so it can hold larger numbers or numbers with more decimal places) ");
+        Console.WriteLine("bool - Boolean variables (true or false)");
+
+
+//declaration
+        Console.WriteLine("Declaration: DataType variableName = variableDeclaration Ex: string name = Donovan;");
+
+//2 lines of declaration and 
+        int number;
+        number = 2;
+
+//single line declaration
+        int secondNumber = 1;

@@ -1,0 +1,5 @@
+//Rules
+        Console.WriteLine("Rules:");
+        Console.WriteLine("in C# end all statements must end with ' ; ' or you will get an error");
+        Console.WriteLine("Indentation does not mater but is convention to keep code clean, all code blocks will be contained in () or {} or []");
+        Console.WriteLine("Convention in C# is to put the curly braces {} on their own lines");

@@ -1,0 +1,28 @@
+//variable types
+        string stringOfText = "string of text";
+        Console.WriteLine("Type: string, can only store text within double quotes");
+
+        int integer = 1;
+        Console.WriteLine("Type: int, can only store whole numbers");
+
+        float floatingPoint = 1.1234567f;
+        Console.WriteLine("Type: float, precise up to 7 digits, Size: 32 bits");
+        Console.WriteLine("Use: Fast, less precise - graphics, scientific");
+
+        double DPFloating = 1.1517;
+        Console.WriteLine("Type: double, precise up to 15-17 digits, Size: 64 bits");
+        Console.WriteLine("USe: Default for real numbers - general purpose");
+
+        decimal decimals = 1.2829m;
+        Console.WriteLine("Type: decimal, precise up to 28-29 digits, Size: 128 bits");
+        Console.WriteLine("Use: High precision - finance, currency, accuracy");
+
+        bool booleanTrue = true;
+        bool booleanFalse = false;
+        Console.WriteLine("Type: bool, must be declared as true or false, must be Case sensitive");
+        Console.WriteLine("C# lowercase required: true/false");
+        Console.WriteLine("java lowercase required: true/false");
+        Console.WriteLine("python uppercase required: True/False");
+
+        Console.WriteLine("Using Variables");
+        Console.WriteLine($"string:{stringOfText} int:{integer} float:{floatingPoint} double:{DPFloating} decimal:{decimals} bool(true):{booleanTrue} bool(false):{booleanFalse}");

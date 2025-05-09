@@ -1,0 +1,6 @@
+//Write to the console
+        Console.WriteLine("Hello World! This is the Sandbox Project.");
+        Console.WriteLine("Use 'Console.WriteLine(doublequote text doublequote);' to send text into the console with c#");
+        Console.WriteLine("WriteLine will always produce a new line.");
+        Console.Write("There will not be a newline after this. ");
+        Console.Write("This sentence is a new command using Console.write() and will not create a new line but continue after the last.");
