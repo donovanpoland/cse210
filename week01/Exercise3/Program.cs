@@ -66,6 +66,7 @@ class Program
                 }
                 else
                 {
+                    //wrong numbers count as another guess
                     Console.Write("That is not a number between 1 and 100, please try again. ");
                     guess = float.Parse(Console.ReadLine());
                 }// exit nested if statement
