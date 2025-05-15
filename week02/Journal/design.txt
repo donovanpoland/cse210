@@ -1,0 +1,23 @@
+//class Journal
+_entries: List<Entry>
+
+//methods
+AddEntry(newEntry : Entry) :void
+DisplayAll():void
+SaveToFile(file:String):void
+LoadFromFile(file:string) : void
+
+
+//class Entry
+_date: string
+_promptText: string
+_entryText: string
+
+//methods
+Display():void
+
+//class PromptGenerator
+_prompts:List<string>
+
+//methods
+GetRandomPrompt: string
