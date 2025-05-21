@@ -21,8 +21,16 @@ class Journal
     //methods
     public void AddEntry(Entry newEntry)
     {
-        newEntry.DisplayPrompt();
-        _entries.Add($"Date: {newEntry._date} - Prompt: {newEntry._promptText}\n{newEntry._entryText}\n------");
+        if (_entries.Count > 0)
+        {
+            WriteLine("\nPlease save current entry before adding a new one.");
+        }
+        else
+        {
+            newEntry.DisplayPrompt();
+            _entries.Add($"Date: {newEntry._date} - Entry number: {newEntry._entryNumber}\n" +
+            $"Prompt: {newEntry._promptText}\n{newEntry._entryText}\n--");
+        }
     }
 
     public void DisplayUnsavedEntries()
@@ -30,7 +38,7 @@ class Journal
         //check if list is empty
         if (_entries.Count == 0)
         {
-            WriteLine("\nNo entries found.");
+            WriteLine("\nNo new entries found.");
         }
         else
         {
@@ -42,25 +50,73 @@ class Journal
     }
     public void SaveToFile()
     {
-        string journalEntries = "JournalEntries.txt";
-
-        using (StreamWriter save = new StreamWriter(journalEntries))
+        if (_entries.Count == 0)
         {
-            foreach (string entry in _entries)
+            WriteLine("\nNothing to save.");
+        }
+        else
+        {
+            string journalEntries = "JournalEntries.txt";
+
+            //second parameter append = true for adding to the file instead of overwriting it
+            using (StreamWriter save = new StreamWriter(journalEntries, append: true))
             {
-                save.WriteLine(entry);
+                foreach (string entry in _entries)
+                {
+                    save.WriteLine(entry);
+                }
             }
+
+            if (_entries.Count == 1)
+            {
+                //save current entry number
+                _entry.SaveEntryNumber(_entry._entryNumber);
+            }
+
+            //empty string so the same entry is not saved multiple times
+            _entries.Clear();
         }
     }
     public void LoadFromFile()
     {
+        string journalEntries = "JournalEntries.txt";
+        if (File.Exists(journalEntries))
+        {
+            string[] lines = File.ReadAllLines(journalEntries);
 
+            if (lines.Length == 0)
+            {
+                WriteLine("\nJournal file is empty. Start by creating an entry.");
+                return;//exit method if nothing in the file
+            }
+
+            string fullEntry = "";
+
+            foreach (string line in lines)
+            {
+                if (line.Trim() == "--")
+                {
+                    WriteLine(fullEntry.Trim());
+                    // show with separator
+                    WriteLine(new string('-', 40));  
+                    fullEntry = "";  // reset for next entry
+                }
+                else
+                {
+                    fullEntry += line + "\n";
+                }
+            }
+        }
+        else
+        {
+            WriteLine("\nNo journal file found. Start by creating an entry.");
+        }
     }
 
     public void Menu()
     {
 
-        WriteLine("\nPlease Select one of the following choices");
+        WriteLine("\nPlease Select one of the following choices in either number or word form:");
         WriteLine("1. Write");
         WriteLine("2. Display");
         WriteLine("3. Load");

@@ -1,9 +1,12 @@
-Date: 05/20/2025 - Prompt: What boundaries do I need to set or reinforce?
-entry 1
-------
-Date: 05/20/2025 - Prompt: How do I practice being present in daily life?
-entry 2
-------
-Date: 05/20/2025 - Prompt: What habits help me become the version of myself I want to be?
+Date: 05/20/2025 - Entry number: 1
+Prompt: What do I need more (or less) of in my relationships?
+entry one
+--
+Date: 05/20/2025 - Entry number: 2
+Prompt: What beauty did I notice in the last 24 hours?
+entry two
+--
+Date: 05/20/2025 - Entry number: 3
+Prompt: What does 'success' mean to me, personally?
 entry 3
-------
+--
