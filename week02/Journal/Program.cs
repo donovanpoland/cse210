@@ -1,11 +1,19 @@
 using System;
+/*So I don't have to type console every time I need to use it.*/
+using static System.Console;
 
 class Program
 {
     static void Main(string[] args)
     {
-        PromptGenerator prompt = new PromptGenerator();
+        Journal journal = new Journal();
         
-        Console.WriteLine(prompt.GetRandomPrompt());
+
+        while (journal._quit)
+        {
+            journal.Menu();
+        }
     }
+
+    
 }

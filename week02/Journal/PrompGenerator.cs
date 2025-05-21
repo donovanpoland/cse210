@@ -4,7 +4,7 @@ using System.Collections.Generic;
 class PromptGenerator
 {
     //member variables
-    public List<string> _list;
+    private List<string> _list;
     private Random _random = new Random();
 
     //Default constructor
