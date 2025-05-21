@@ -9,7 +9,7 @@ class Program
         Journal journal = new Journal();
         
 
-        while (journal._quit)
+        while (journal._quit == false)
         {
             journal.Menu();
         }

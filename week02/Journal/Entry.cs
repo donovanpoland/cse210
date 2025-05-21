@@ -18,26 +18,27 @@ class Entry
     //methods
     public void DisplayPrompt()
     {
-        getDate();
-        getPrompt();
+        GetDate();
+        GetPrompt();
         Console.WriteLine($"Date: {_date} - Prompt: {_promptText}");
-        getUserEntry();
+        GetUserEntry();
     }
 
 
-    private void getDate()
+    private void GetDate()
     {
         DateTime today = DateTime.Now;
         _date = today.ToString("MM/dd/yyyy");
     }
-    
-    private void getPrompt()
+
+    private void GetPrompt()
     {
         PromptGenerator prompt = new PromptGenerator();
         _promptText = prompt.GetRandomPrompt();
     }
 
-    private void getUserEntry()
+
+    private void GetUserEntry()
     {
         _entryText = Console.ReadLine();
     }

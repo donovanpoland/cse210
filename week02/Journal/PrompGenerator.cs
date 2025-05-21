@@ -17,7 +17,7 @@ class PromptGenerator
     public string GetRandomPrompt()
     {
         //get list
-        getPromptList();
+        GetPromptList();
         // use random index from list
         int index = _random.Next(_list.Count);
         //return prompt
@@ -25,7 +25,7 @@ class PromptGenerator
     }
 
     // list of prompts
-    private void getPromptList()
+    private void GetPromptList()
     {
         //initialize prompts into list
         _list = new List<string>

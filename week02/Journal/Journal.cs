@@ -1,5 +1,7 @@
 /*So I don't have to type console every time I need to use it.*/
 using static System.Console;
+//for loading files
+using System.IO;
 
 class Journal
 {
@@ -17,34 +19,54 @@ class Journal
 
 
     //methods
-    public void addEntry(Entry entry)
+    public void AddEntry(Entry newEntry)
     {
-        entry = _entry;
+        newEntry.DisplayPrompt();
+        _entries.Add($"Date: {newEntry._date} - Prompt: {newEntry._promptText}\n{newEntry._entryText}\n------");
+    }
 
-    }
-    public void displayUnsavedEntries()
+    public void DisplayUnsavedEntries()
     {
-        
+        //check if list is empty
+        if (_entries.Count == 0)
+        {
+            WriteLine("\nNo entries found.");
+        }
+        else
+        {
+            foreach (string entry in _entries)
+            {
+                WriteLine($"\n{entry}");
+            }
+        }
     }
-    public void saveToFile()
+    public void SaveToFile()
     {
-        
+        string journalEntries = "JournalEntries.txt";
+
+        using (StreamWriter save = new StreamWriter(journalEntries))
+        {
+            foreach (string entry in _entries)
+            {
+                save.WriteLine(entry);
+            }
+        }
     }
-    public void loadFromFile()
+    public void LoadFromFile()
     {
-        
+
     }
 
     public void Menu()
     {
 
-        WriteLine("Please Select one of the following choices");
+        WriteLine("\nPlease Select one of the following choices");
         WriteLine("1. Write");
         WriteLine("2. Display");
         WriteLine("3. Load");
         WriteLine("4. Save");
         WriteLine("5. Quit");
-        WriteLine("What would you like to do?");
+        Write("What would you like to do? ");
         //get choice, change to lowercase and trim white space
         string choice = ReadLine().ToLower().Trim();
 
@@ -53,35 +75,35 @@ class Journal
             case "1":
             case "write":
                 // handle write
-                addEntry(_entry);
+                AddEntry(_entry);
                 break;
 
             case "2":
             case "display":
                 // display current unsaved entries
-                displayUnsavedEntries();
+                DisplayUnsavedEntries();
                 break;
 
             case "3":
             case "load":
                 // handle load
-                loadFromFile();
+                LoadFromFile();
                 break;
 
             case "4":
             case "save":
                 // handle save
-                saveToFile();
+                SaveToFile();
                 break;
 
             case "5":
             case "quit":
-                WriteLine("Good Bye.");
+                WriteLine("\nGood Bye.");
                 _quit = true;
                 break;
 
             default:
-                WriteLine("Invalid choice. Please enter a valid command.");
+                WriteLine("\nInvalid choice. Please enter a valid command.");
                 break;
         }//end switch
     }//end method
