@@ -1,0 +1,52 @@
+What part of the learning activity was the hardest for you?
+
+What does the program do?
+What user inputs does it have?
+What output does it produce?
+How does the program end?
+
+
+//class Scripture
+
+//variables
+
+
+//constructors
+Scripture()
+
+//methods
+HideRandomWords(numberToHide : int) : void
+GetDisplayText() :string
+IsCompletelyHidden() : bool
+
+
+
+//class Reference
+
+//variables
+_endVerse : int
+_book : string
+_chapter : int
+_verse : int
+
+//constructors
+Reference()
+
+//methods
+Display()
+
+
+
+//class Word
+
+//variables
+List<Word>
+Random
+
+//constructors
+
+//methods
+HideWord() : void
+ShowWord() : void
+IsHidden() : bool
+GetDisplayText() : string
