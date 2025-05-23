@@ -9,10 +9,13 @@ How does the program end?
 //class Scripture
 
 //variables
+_reference : Reference
+_words : List<Word>
 
 
 //constructors
 Scripture()
+Scripture(reference : Reference, text : string)
 
 //methods
 HideRandomWords(numberToHide : int) : void
@@ -31,19 +34,23 @@ _verse : int
 
 //constructors
 Reference()
+Reference(book : string, chapter : int, verse : int)
+Reference(book : string, chapter : int, startVerse : int, endVerse : int)
 
 //methods
-Display()
+GetDisplayText() : string
 
 
 
 //class Word
 
 //variables
-List<Word>
-Random
+_text : string
+_isHidden : bool
+
 
 //constructors
+Word()
 
 //methods
 HideWord() : void
