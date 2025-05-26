@@ -1,6 +1,14 @@
 using System;
 using System.Globalization;
 
+
+/*Exceeding requirements.
+    displays random scriptures loaded from a file. 
+    loops through the menu asking if you want to use the same scripture and reset it back to visible.
+    can get a a new scripture if the one displayed is not one you want to memorize or your done memorizing it.
+    prevented preemptive/accidental quitting by hitting enter to many times.
+*/
+
 class Program
 {
     static void Main(string[] args)
