@@ -2,8 +2,8 @@
 class Fraction
 {
     //variables
-    private int _top;
-    private int _bottom;
+    private int _top;//numerator
+    private int _bottom;//denominator
     private bool _isWholeNumberConstructor = false;
 
     //constructors

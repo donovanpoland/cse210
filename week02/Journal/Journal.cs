@@ -32,7 +32,6 @@ class Journal
             $"Prompt: {newEntry._promptText}\n{newEntry._entryText}\n--");
         }
     }
-
     public void DisplayUnsavedEntries()
     {
         //check if list is empty
@@ -112,7 +111,6 @@ class Journal
             WriteLine("\nNo journal file found. Start by creating an entry.");
         }
     }
-
     public void Menu()
     {
 

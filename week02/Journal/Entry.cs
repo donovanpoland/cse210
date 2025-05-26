@@ -34,13 +34,12 @@ class Entry
         
     }
 
-
     private void GetDate()
     {
         DateTime today = DateTime.Now;
         _date = today.ToString("MM/dd/yyyy");
     }
-
+    
     private void GetPrompt()
     {
         PromptGenerator prompt = new PromptGenerator();
