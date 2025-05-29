@@ -1,0 +1,69 @@
+
+
+//object
+Class: Product
+
+//variables
+_name: string
+_productId: int
+_price: decimal
+_quantity: int
+
+
+// Constructor
+Product(string name, int productId, decimal price, int quantity)
+
+//methods
+getTotalCost() : decimal
+
+///////////////////////////////////////////
+
+//object
+Class: Customer
+
+//variables
+_name: string
+_address: Address
+
+// Constructor
+Customer(string name, Address address)
+
+//methods
+IsInUSA(): bool
+GetShippingInfo(): string
+
+///////////////////////////////////////////
+
+//object
+class: Address
+
+//variables
+_street: string
+_city: string
+_stateProvince: string
+_country: string
+_zipCode: string
+
+// Constructor
+Address(string street, string city, string stateProvince, string country, string zipCode)
+
+//methods
+IsInUSA(): bool
+GetFullAddress(): string
+
+///////////////////////////////////////////////////
+
+//object
+class: Order
+
+//variables
+_products: List<Product>
+_customer: Customer
+
+// Constructor
+Order(List<Product> products, Customer customer)
+
+//methods
+GetTotalCost(): decimal
+GetPackingLabel(): string
+GetShippingLabel(): string

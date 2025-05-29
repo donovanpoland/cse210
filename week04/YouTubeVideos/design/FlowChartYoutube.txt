@@ -1,0 +1,9 @@
+Create Video object
+  ↓
+Call Video.DisplayVideoInfo()
+  ↓
+Create Comment object
+  ↓
+Call Video.AddComment(Comment)
+  ↓
+Call Video.GetNumberOfComments()

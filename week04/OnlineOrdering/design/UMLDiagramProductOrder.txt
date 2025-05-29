@@ -1,0 +1,49 @@
++----------------------------+
+|         Address           |
++----------------------------+
+| - _street: string          |
+| - _city: string            |
+| - _stateProvince: string   |
+| - _country: string         |
+| - _zipCode: string         |
++----------------------------+
+| + IsInUSA(): bool          |
+| + GetFullAddress(): string|
++----------------------------+
+
++----------------------------+
+|         Customer          |
++----------------------------+
+| - _name: string            |
+| - _address: Address        |
++----------------------------+
+| + IsInUSA(): bool          |
+| + GetShippingInfo(): string|
++----------------------------+
+
++----------------------------+
+|          Product          |
++----------------------------+
+| - _name: string            |
+| - _productId: int          |
+| - _price: decimal          |
+| - _quantity: int           |
++----------------------------+
+| + getTotalCost(): decimal |
++----------------------------+
+
++----------------------------+
+|           Order           |
++----------------------------+
+| - _products: List<Product>|
+| - _customer: Customer      |
++----------------------------+
+| + GetTotalCost(): decimal  |
+| + GetPackingLabel(): string|
+| + GetShippingLabel(): string|
++----------------------------+
+
+Relationships:
+- Customer → Address (has-a)
+- Order → Customer (contains)
+- Order → Product (contains multiple)

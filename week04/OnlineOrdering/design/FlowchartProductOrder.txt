@@ -1,0 +1,13 @@
+Create Address object
+  ↓
+Create Customer object using Address
+  ↓
+Create Product objects (one or more)
+  ↓
+Create Order object with Products and Customer
+  ↓
+Call Order.GetTotalCost()
+  ↓
+Call Order.GetPackingLabel()
+  ↓
+Call Order.GetShippingLabel()
