@@ -80,6 +80,7 @@ public class Activity
 
             case "4":
             case "quit":
+                Clear();
                 WriteLine("Goodbye!");
                 _quit = true;
                 break;
