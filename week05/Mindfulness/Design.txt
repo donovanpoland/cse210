@@ -1,0 +1,56 @@
+
+//object
+class Activity
+
+//variables
+_name:string
+_description:string
+_duration: int
+
+//constructors
+Activity()
+
+//methods
+DisplayStartingMessage(): void
+DisplayEndingMessage(): void
+ShowSpinner(seconds: int): void
+ShowCountDown(seconds: int): void
+
+//object
+class BreathingActivity : Activity
+
+//variables
+
+//constructors
+BreathingActivity()
+
+//methods
+Run():void
+
+//object
+class ListingActivity : Activity
+
+//variables
+
+//constructors
+ListingActivity()
+
+//methods
+Run():void
+GetRandomPrompt(): void
+GetListFromUser(): List<string>
+
+//object
+class ReflectingActivity : Activity
+
+//variables
+
+//constructors
+ReflectingActivity()
+
+//methods
+Run():void
+GetRandomPrompt():string
+GetRandomQuestion():string
+DisplayPrompt():void
+DisplayQuestion():void

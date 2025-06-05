@@ -18,5 +18,6 @@ class Program
         WritingAssignment wrt1 = new WritingAssignment("Donovan Poland", "Writing", "The Causes of World War II");
         Console.WriteLine(wrt1.GetSummary());
         Console.WriteLine($"{wrt1.GetWritingInformation()}\n");
+
     }
 }
