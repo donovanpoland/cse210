@@ -8,5 +8,5 @@ entry two
 --
 Date: 05/20/2025 - Entry number: 3
 Prompt: What does 'success' mean to me, personally?
-entry 3
+entry three
 --

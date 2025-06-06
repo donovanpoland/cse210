@@ -8,13 +8,11 @@ class Program
     static void Main(string[] args)
     {
 
-        Activity activity = new Activity();
+        MenuManager menu = new MenuManager();
 
-        while (!activity.ShouldQuit())
+        while (!menu.ShouldQuit())
         {
-            activity.Menu();
+            menu.ShowMenu();
         }
-
-
     }
 }

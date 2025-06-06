@@ -5,20 +5,18 @@ public class ListingActivity : Activity
     private Random _random = new Random();
 
     //create a default description so that when a new object is created a description of this activity is not needed
-    private const string DefaultDescription = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+    private const string DefaultDescription =
+    "This activity will help you reflect on the good things in your life," +
+    "\nThe minimum duration for this activity is 30 seconds." +
+    "\nThis can be done by having you list as many things as you can under a certain topic.";
+    public const string DefaultName = "Listing";
+    private const int DefaultDuration = 30;
 
     //constructor
-    public ListingActivity(string name, int duration)
-    : base(name, DefaultDescription, duration)
+    public ListingActivity()
+    //variables inherited from Activity class
+    : base(DefaultName, DefaultDescription, DefaultDuration)
     {
-
-    }
-
-    //constructor for use if custom activity description is needed
-    public ListingActivity(string name, string description, int duration)
-    : base(name, description, duration)
-    {
-
     }
 
     //methods
@@ -26,7 +24,7 @@ public class ListingActivity : Activity
     {
         //method inherited from Activity class
         DisplayStartingMessage();
-        //pause duration goes here
+        ShowSpinner(7);
 
         GetRandomPrompt();
         //pause duration goes here

@@ -7,20 +7,17 @@ public class ReflectionActivity : Activity
     private Random _random = new Random();
 
     //create a default description so that when a new object is created a description of this activity is not needed
-    private const string DefaultDescription = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+    private const string DefaultDescription =
+    "This activity will help you reflect on times in your life when you have shown strength and resilience." +
+    "\nThe minimum duration for this activity is 30 seconds." +
+    "\nThis will help you recognize the power you have and how you can use it in other aspects of your life.";
+    public const string DefaultName = "Reflection";
+    private const int DefaultDuration = 30;
 
     //constructor
-    public ReflectionActivity(string name, int duration)
+    public ReflectionActivity()
     //variables inherited from Activity class
-    : base(name, DefaultDescription, duration)
-    {
-        //no extra code needed
-    }
-
-    //constructor for use if custom activity description is needed
-    public ReflectionActivity(string name, string description, int duration)
-    //variables inherited from Activity class
-    : base(name, description, duration)
+    : base(DefaultName, DefaultDescription, DefaultDuration)
     {
         //no extra code needed
     }
