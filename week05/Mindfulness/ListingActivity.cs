@@ -4,7 +4,7 @@ public class ListingActivity : Activity
     private List<string> _list;
     private Random _random = new Random();
 
-    //create a default description so that when a new object is created a description of this activity is not needed
+    //create a default variables so that when a new object is created these items do not explicitly need to be called
     private const string DefaultDescription =
     "This activity will help you reflect on the good things in your life," +
     "\nThe minimum duration for this activity is 30 seconds." +

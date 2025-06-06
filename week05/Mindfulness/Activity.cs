@@ -70,18 +70,56 @@ public class Activity
     public void DisplayEndingMessage()
     {
         Write("\n\nWell Done!! ");
+        ShowDance(5);
     }
 
     public void ShowSpinner(int seconds)
     {
-        GetAnimationString();
+        GetSpinAnimationString();
+        int index = 0;
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
 
-        foreach (string s in _list)
+        while (DateTime.Now < endTime)
         {
-            Write(s);
-            Thread.Sleep(1000);
+            //write the current spinner character
+            Write(_list[index]);
+
+            //speed of animation
+            Thread.Sleep(750);  
+
+            //erase it
             Write("\b\b \b");
+
+            //move to next spinner character
+            index = (index + 1) % _list.Count;
         }
+    }
+
+    public void ShowDance(int seconds)
+    {
+        //allow special characters to be used
+        OutputEncoding = System.Text.Encoding.UTF8;
+        //get string
+        GetDanceAnimationString();
+        int spinnerIndex = 0;
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+
+        while (DateTime.Now < endTime)
+        {
+            string frame = _list[spinnerIndex];
+            Write(frame);
+
+            Thread.Sleep(750);
+
+            // Move back to start of previous frame
+            Write(new string('\b', frame.Length));
+
+            spinnerIndex = (spinnerIndex + 1) % _list.Count;
+        }
+
+        // Clean ending
+        Write(new string(' ', _list[0].Length));
+        Write(new string('\b', _list[0].Length));
     }
 
     public void ShowCountDown(int seconds)
@@ -92,7 +130,14 @@ public class Activity
             Write($"{i} ");
             Thread.Sleep(1000);
             //erase the previous number
-            Write("\b\b \b");
+            if (i <= 9)
+            {
+                Write("\b\b \b");
+            }
+            else
+            {
+                Write("\b\b\b \b");
+            }
         }
     }
 
@@ -105,14 +150,30 @@ public class Activity
         }
     }
 
-    private void GetAnimationString()
+    private void GetSpinAnimationString()
     {
         _list = new List<string>
         {
             "| ",
             "/ ",
-            "- ",
+            "— ",
             "\\ ",
         };
+    }
+
+    private void GetDanceAnimationString()
+    {
+        _list = new List<string>
+        {
+            "<('.'<) ",
+            "(>'.')> ",
+            "<('.')> "
+        };
+    }
+
+    public DateTime GetEndTime()
+    {
+        DateTime startTime = DateTime.Now;
+        return startTime.AddSeconds(GetDuration());
     }
 }

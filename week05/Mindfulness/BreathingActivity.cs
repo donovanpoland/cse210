@@ -29,7 +29,6 @@ public class BreathingActivity : Activity
 
         //methods inherited from Activity class
         DisplayEndingMessage();
-        ShowSpinner(10);
     }
 
     public void AlternateBreath()
@@ -40,8 +39,7 @@ public class BreathingActivity : Activity
         int halfBreath = breathDuration / 2;
 
         //get start and end time for activity
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(GetDuration());
+        DateTime endTime = GetEndTime();
 
         while (DateTime.Now < endTime)
         {
