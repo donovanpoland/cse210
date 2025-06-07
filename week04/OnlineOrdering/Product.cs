@@ -4,17 +4,17 @@ public class Product
     //variables
     private string _name;
     private int _productId;
-    private double _price;
+    private decimal _price;
     private int _quantity;
 
 
     //constructors
     public Product()
     {
-        
+
     }
 
-    public Product(string name, int productId, double price, int quantity)
+    public Product(string name, int productId, decimal price, int quantity)
     {
         _name = name;
         _productId = productId;
@@ -23,21 +23,20 @@ public class Product
     }
 
     //methods
-    public double GetPrice()
+    public decimal GetTotalCost()
     {
-        return _price;
+        return _price * _quantity;
     }
 
-    public int GetQuantity()
+    public string GetName()
     {
-       return _quantity;
+        return _name;
     }
 
-    public string DisplayProduct()
+    public int GetProductId()
     {
-        return $"ID: {_productId} Product: {_name} Price: {_price} Quantity: {-_quantity}";
+        return _productId;
     }
-
 
 
 }

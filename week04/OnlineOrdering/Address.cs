@@ -28,12 +28,13 @@ public class Address
     //methods
     public bool IsUsa()
     {
-        return true;
+        return _country.Trim().ToLower() == "usa";
     }
 
     public string DisplayAddress()
     {
-        return $"{_street}{_city}{_state},{_country}{_zipCode}";
+        //standard US format
+        return $"{_street}\n{_city}, {_state} {_zipCode}\n{_country}";
     }
 
 

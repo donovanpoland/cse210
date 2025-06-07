@@ -6,13 +6,20 @@ public class Customer
     private Address _address;
 
     //constructor
-    public Customer()
+    public Customer(string name, Address address)
     {
-
+        _name = name;
+        _address = address;
     }
 
     //methods
-    public bool LiveInUsa() {
+    public bool LiveInUsa()
+    {
         return _address.IsUsa();
+    }
+
+    public string GetShippingInfo()
+    {
+        return $"{_name}\n{_address.DisplayAddress()}";
     }
 }

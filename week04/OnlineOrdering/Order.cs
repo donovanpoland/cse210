@@ -5,54 +5,50 @@ public class Order
 
     //variables
     private List<Product> _products;
-    Product _product = new Product();
     private Customer _customer;
 
     //constructors
-    public Order(Customer customer)
+    public Order(List<Product> products, Customer customer)
     {
         _customer = customer;
-        _products = new List<Product>();
+        _products = products;
     }
 
     //methods
-    public void AddProduct(Product product)
+    public decimal GetTotalCost()
     {
-        _products.Add(product);
-    }
-
-    public double CalculateTotal(Product product)
-    {
-        double total = 0;
-        //calculate the total of products
-        for (int i = 0; i < _products.Count; i++)
+        decimal total = 0;
+        foreach (Product product in _products)
         {
-            total += (product.GetPrice() * product.GetQuantity());
+            total += product.GetTotalCost();
+        }
+
+        // Add shipping cost
+        if (_customer.LiveInUsa())
+        {
+            total += 5;
+        }
+        else
+        {
+            total += 35;
         }
 
         return total;
     }
 
-    public void DisplayReceipt()
+    public string GetPackingLabel()
     {
-        if (_products.Count > 0)
+        string label = "";
+        foreach (Product product in _products)
         {
-            for (int i = 0; i < _products.Count; i++)
-            {
-                Console.WriteLine($"{_products[i]}");
-            }
-            Console.WriteLine(CalculateTotal(_product));
+            label += $"Product: {product.GetName()} | ID: {product.GetProductId()}\n";
         }
-        else
-        {
-            Console.WriteLine("No Products ordered.");
-        }
+        return label;
     }
 
-    public void PackingLabel()
+    public string GetShippingLabel()
     {
-        _customer.
+        return _customer.GetShippingInfo();
     }
-
 
 }
