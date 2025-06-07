@@ -43,9 +43,9 @@ public class Activity
             // Set to default/minimum (already stored in _duration)
             SetDuration(_duration);
 
-            Console.Write("\nUpdating duration to minimum");
+            Write("\nUpdating duration to minimum");
             ShowDotsLoading(3);
-            Console.Write($"\nSet to {_duration} seconds.");
+            Write($"\nSet to {_duration} seconds.");
             ShowDotsLoading(3);
         }
         else
@@ -59,7 +59,7 @@ public class Activity
         Clear();
         WriteLine($"Welcome to {_name} Activity.\n");
         WriteLine($"{_description}\n");
-        Write("How long, in seconds would you like your session? ");
+        Write("How long, in seconds would you like your session to be? ");
         CheckDuration();
 
 
@@ -97,9 +97,6 @@ public class Activity
 
     public void ShowDance(int seconds)
     {
-        //allow special characters to be used
-        OutputEncoding = System.Text.Encoding.UTF8;
-        //get string
         GetDanceAnimationString();
         int spinnerIndex = 0;
         DateTime endTime = DateTime.Now.AddSeconds(seconds);

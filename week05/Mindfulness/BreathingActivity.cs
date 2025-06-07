@@ -6,9 +6,9 @@ public class BreathingActivity : Activity
     private const string DefaultName = "Breathing";
     private const string DefaultDescription =
     "This activity will help you relax by walking you through breathing in and out slowly." +
-    "\nThe minimum duration for this activity is 36 seconds." +
+    "\nThe minimum session duration for this activity is 12 seconds." +
     "\nClear your mind and focus on your breathing.";
-    private const int DefaultDuration = 36;
+    private const int DefaultDuration = 12;
 
 
     //constructor
@@ -31,12 +31,12 @@ public class BreathingActivity : Activity
         DisplayEndingMessage();
     }
 
-    public void AlternateBreath()
+    private void AlternateBreath()
     {
         Clear();
         //total time per inhale + exhale (6+6 seconds)
-        int breathDuration = 12; 
-        int halfBreath = breathDuration / 2;
+        int fullBreathDuration = 12; 
+        int halfBreath = fullBreathDuration / 2;
 
         //get start and end time for activity
         DateTime endTime = GetEndTime();
@@ -45,6 +45,11 @@ public class BreathingActivity : Activity
         {
             Write("\n\nbreath in");
             ShowDotsLoading(halfBreath);
+            if (DateTime.Now >= endTime)
+            {
+                Write("\n\nbreath out");
+                break;
+            }
             Write("\n\nbreath out");
             ShowDotsLoading(halfBreath);
         }

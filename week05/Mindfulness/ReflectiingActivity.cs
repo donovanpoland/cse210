@@ -9,10 +9,10 @@ public class ReflectionActivity : Activity
     //create a default variables so that when a new object is created these items do not explicitly need to be called
     private const string DefaultDescription =
     "This activity will help you reflect on times in your life when you have shown strength and resilience." +
-    "\nThe minimum duration for this activity is 25 seconds." +
+    "\nThe minimum session duration for this activity is 15 seconds." +
     "\nThis will help you recognize the power you have and how you can use it in other aspects of your life.";
     public const string DefaultName = "Reflection";
-    private const int DefaultDuration = 25;
+    private const int DefaultDuration = 15;
 
     //constructor
     public ReflectionActivity()
@@ -34,7 +34,7 @@ public class ReflectionActivity : Activity
         DisplayEndingMessage();
     }
 
-    public void Reflecting()
+    private void Reflecting()
     {
         Clear();
         DateTime endTime = GetEndTime();
@@ -43,8 +43,12 @@ public class ReflectionActivity : Activity
         {
             DisplayPrompt();
             ShowDotsLoading(5);
+            if (DateTime.Now >= endTime)
+            {
+                break;
+            }
             DisplayQuestion();
-            ShowSpinner(20);
+            ShowSpinner(10);
             WriteLine();
         }
     }
@@ -69,12 +73,12 @@ public class ReflectionActivity : Activity
         return _list[index];
     }
 
-    public void DisplayPrompt()
+    private void DisplayPrompt()
     {
         Write($"\n{GetRandomPrompt()}");
     }
 
-    public void DisplayQuestion()
+    private void DisplayQuestion()
     {
         Write($"\n{GetRandomQuestion()} ");
     }
