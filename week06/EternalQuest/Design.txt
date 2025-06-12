@@ -1,0 +1,80 @@
+//object 
+class GoalManager
+
+//variables
+_goals : List<Goal>
+_score : int
+
+//constructors
+GoalManager()
+
+//methods
+Start() : void  
+DisplayPlayerInfo() : void  
+ListGoalNames() : void  
+ListGoalDetails() : void  
+CreateGoal() : void  
+RecordEvent() : void  
+SaveGoals() : void  
+LoadGoals() : void
+
+//object 
+class Goal
+
+//variables
+_shortName : string  
+_description : string  
+_points : string
+
+//constructors
+Goal(name : string, description : string, points : string)
+
+//methods
+RecordEvent() : void  
+IsComplete() : bool  
+GetDetailsString() : string  
+GetStringRepresentation() : string
+
+//object 
+class SimpleGoal : Goal
+
+//variables
+_isComplete : bool
+
+//constructors
+SimpleGoal(name : string, description : string, points : string)
+
+//methods
+RecordEvent() : void  
+IsComplete() : bool  
+GetStringRepresentation() : string
+
+//object 
+class EternalGoal : Goal
+
+//constructors
+EternalGoal(name : string, description : string, points : string)
+
+//methods
+RecordEvent() : void  
+IsComplete() : bool  
+GetStringRepresentation() : string
+
+//object 
+class ChecklistGoal : Goal
+
+//variables
+_amountCompleted : int  
+_target : int  
+_bonus : int
+
+//constructors
+ChecklistGoal(name : string, description : string, points : string, target : int, bonus : int)
+
+//methods
+RecordEvent() : void  
+IsComplete() : bool  
+GetDetailsString() : string  
+GetStringRepresentation() : string
+
+
