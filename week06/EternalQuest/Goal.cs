@@ -17,22 +17,40 @@ public class Goal
     //methods
     public virtual void RecordEvent()
     {
-
+        
     }
 
     public virtual bool IsComplete()
     {
-        return true;
+        return false;
     }
 
     public virtual string GetDetailsString()
     {
-        return "";
+
+        string checkBox = "";
+        if (IsComplete() == true)
+        {
+            checkBox = "[x]";
+        }
+        else
+        {
+            checkBox = "[]";
+        }
+
+        Console.Write("\nWhat is the name of your Goal? ");
+        _shortName = Console.ReadLine().Trim();
+        Console.Write("What is a short description of it? ");
+        _description = Console.ReadLine().Trim();
+        Console.Write("What is the amount of points associated with this goal?");
+        _points = Console.ReadLine().Trim();
+        
+        return $"{checkBox} {_shortName} {_description} {_points}";
     }
 
     public virtual string GetStringRepresentation()
     {
-        return "";
+        return GetDetailsString();
     }
 
 

@@ -7,6 +7,11 @@ class Program
     {
         Console.WriteLine("Hello World! This is the EternalQuest Project.");
 
-        
+        GoalManager menu = new GoalManager();
+
+        while (!menu.IsEnd())
+        {
+            menu.Start();
+        }
     }
 }

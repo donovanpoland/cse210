@@ -19,11 +19,11 @@ public class SimpleGoal : Goal
 
     public override bool IsComplete()
     {
-        return true;
+        return _isComplete;
     }
 
     public override string GetStringRepresentation()
     {
-        return "";
+        return GetDetailsString();
     }
 }

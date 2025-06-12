@@ -9,7 +9,7 @@ public class ChecklistGoal : Goal
     public ChecklistGoal(string name, string description, string points, int target, int bonus) : base(name, description, points)
     {
         _target = target;
-        _bonus = target;
+        _bonus = bonus;
     }
 
     //methods
@@ -20,16 +20,24 @@ public class ChecklistGoal : Goal
 
     public override bool IsComplete()
     {
-        return true;
+        if (_amountCompleted == _target)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 
     public override string GetStringRepresentation()
     {
-        return "";
+        return GetDetailsString();
     }
     
     public override string GetDetailsString()
     {
-        return "";
+        return $"{ GetDetailsString()} {_target} {_bonus}";
     }
 }
