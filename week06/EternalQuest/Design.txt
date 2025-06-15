@@ -30,10 +30,10 @@ _points : string
 Goal(name : string, description : string, points : string)
 
 //methods
-RecordEvent() : void  
-IsComplete() : bool  
+RecordEvent() : void  (Abstract)
+IsComplete() : bool  (Abstract)
 GetDetailsString() : string  
-GetStringRepresentation() : string
+GetStringRepresentation() : string (Abstract)
 
 //object 
 class SimpleGoal : Goal

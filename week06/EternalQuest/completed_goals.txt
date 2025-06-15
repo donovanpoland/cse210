@@ -1,0 +1,3 @@
+SimpleGoal - Name: Morning Prayer - Desc: Pray before breakfast - Points: 25 - Completed: True
+SimpleGoal - Name: Compliment Someone - Desc: Say something kind to someone - Points: 25 - Completed: True
+SimpleGoal - Name: Read a book - Desc: Finish a chapter a day - Points: 50 - Completed: True

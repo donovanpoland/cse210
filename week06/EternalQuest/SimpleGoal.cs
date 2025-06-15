@@ -8,13 +8,14 @@ public class SimpleGoal : Goal
     //constructors
     public SimpleGoal(string name, string description, string points) : base(name, description, points)
     {
-        //left blank due to inheritance
+        _isComplete = false;
     }
 
     //methods
     public override void RecordEvent()
     {
-
+        _isComplete = true;
+        Console.WriteLine($"Goal \"{_shortName}\" marked complete! +{_points} points");
     }
 
     public override bool IsComplete()
@@ -22,8 +23,33 @@ public class SimpleGoal : Goal
         return _isComplete;
     }
 
+    //for loading from a file
+    public void SetComplete(bool value)
+    {
+        _isComplete = value;
+    }
+
     public override string GetStringRepresentation()
     {
-        return GetDetailsString();
+        if (_isComplete == false)
+        {
+            return $"SimpleGoal - Name: {_shortName} - Desc: {_description} - Points: {_points}";
+        }
+        else//true
+        {
+            return $"SimpleGoal - Name: {_shortName} - Desc: {_description} - Points: {_points} - Completed: {_isComplete}";
+        }
+    }
+
+    public override int GetPoints()
+    {
+        if (!_isComplete)
+        {
+            return int.Parse(_points);
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

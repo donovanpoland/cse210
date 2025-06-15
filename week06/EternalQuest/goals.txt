@@ -1,0 +1,9 @@
+EternalGoal - Name: read scriptures daily - Desc: study for 15 minutes - Points: 15 - Completed: 3
+EternalGoal - Name: Exercise - Desc: Do at least 20 minutes of exercise - Points: 15 - Completed: 1
+ChecklistGoal - Name: Journal Daily - Desc: Write one journal entry per day - Points: 10 - Target: 7 - Bonus: 20 - Completed: 2
+EternalGoal - Name: Meditate - Desc: Practice mindfulness for 10 minutes - Points: 15 - Completed: 0
+EternalGoal - Name: Serve Others - Desc: Perform a small act of kindness - Points: 15 - Completed: 1
+ChecklistGoal - Name: Attend Church - Desc: Attend weekly Sunday services - Points: 20 - Target: 4 - Bonus: 30 - Completed: 1
+ChecklistGoal - Name: Scripture Memorization - Desc: Memorize one verse per session - Points: 10 - Target: 5 - Bonus: 15 - Completed: 0
+SimpleGoal - Name: Evening Reflection - Desc: Review your day with gratitude - Points: 25
+ChecklistGoal - Name: Visit Grandparents - Desc: Call or visit them weekly - Points: 25 - Target: 4 - Bonus: 50 - Completed: 1

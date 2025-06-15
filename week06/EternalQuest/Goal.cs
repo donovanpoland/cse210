@@ -1,10 +1,11 @@
-public class Goal
+using static System.Console;
+public abstract class Goal
 {
 
     //variables
-    private string _shortName;
-    private string _description;
-    private string _points;
+    protected string _shortName;
+    protected string _description;
+    protected string _points;
 
     //constructors
     public Goal(string name, string description, string points)
@@ -15,20 +16,15 @@ public class Goal
     }
 
     //methods
-    public virtual void RecordEvent()
-    {
-        
-    }
+    public abstract void RecordEvent();
 
-    public virtual bool IsComplete()
-    {
-        return false;
-    }
+
+    public abstract bool IsComplete();
 
     public virtual string GetDetailsString()
     {
 
-        string checkBox = "";
+        string checkBox;
         if (IsComplete() == true)
         {
             checkBox = "[x]";
@@ -38,24 +34,21 @@ public class Goal
             checkBox = "[]";
         }
 
-        Console.Write("\nWhat is the name of your Goal? ");
-        _shortName = Console.ReadLine().Trim();
-        Console.Write("What is a short description of it? ");
-        _description = Console.ReadLine().Trim();
-        Console.Write("What is the amount of points associated with this goal?");
-        _points = Console.ReadLine().Trim();
         
-        return $"{checkBox} {_shortName} {_description} {_points}";
+        //convert first letters to capital for display
+        return $"{checkBox} - Name: {CapitalizeFirst(_shortName)} - Desc: {CapitalizeFirst(_description)} - Points: {_points}";
     }
 
-    public virtual string GetStringRepresentation()
+    private string CapitalizeFirst(string input)
     {
-        return GetDetailsString();
+        if (string.IsNullOrEmpty(input)) return input;
+        return char.ToUpper(input[0]) + input.Substring(1);
     }
 
+    public abstract string GetStringRepresentation();
 
 
-
+    public abstract int GetPoints();
 
 
 }
