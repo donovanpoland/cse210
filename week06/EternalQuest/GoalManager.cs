@@ -8,6 +8,8 @@ public class GoalManager
     private int _score;
     private bool _end = false;
     private Timers timer = new Timers();
+    private int _unsavedScore;
+
 
 
     //constructor
@@ -19,6 +21,9 @@ public class GoalManager
     //methods
     public void Start()
     {
+        Clear();
+        timer.Loading();
+        CalculateScoreOnStart();
         DisplayPlayerInfo();
 
         ListMainMenu();
@@ -55,14 +60,18 @@ public class GoalManager
                 }
                 else
                 {
-                    Write("No Goals to save.");
+                    Clear();
+                    Write("\nNo Goals to save.");
                     timer.ShowDotsLoading(3);
                 }
                 break;
 
             case "4":
             case "current":
-                ConfirmProceedIfUnsavedGoals();
+                if (!ConfirmProceedIfUnsavedGoals())
+                {
+                    return;
+                }
                 LoadGoals();
                 if (_goals.Count > 0)
                 {
@@ -76,7 +85,10 @@ public class GoalManager
 
             case "5":
             case "complete":
-                ConfirmProceedIfUnsavedGoals();
+                if (!ConfirmProceedIfUnsavedGoals())
+                {
+                    return;
+                }
                 LoadCompletedGoals();
                 if (_goals.Count > 0)
                 {
@@ -104,7 +116,10 @@ public class GoalManager
 
             case "7":
             case "quit":
-                ConfirmProceedIfUnsavedGoals();
+                if (!ConfirmProceedIfUnsavedGoals())
+                {
+                    return;
+                }
                 Clear();
                 Write("Goodbye");
                 timer.ShowDotsLoading(3);
@@ -133,7 +148,6 @@ public class GoalManager
         WriteLine("3. Checklist Goal");
         WriteLine("4. Nothing");
         Write("What type of goal would you like to create? ");
-
     }
 
     public void ListMainMenu()
@@ -151,9 +165,20 @@ public class GoalManager
 
     public void ListGoalDetails()
     {
-        foreach (Goal goal in _goals)
+        if (_goals.Count > 0)
         {
-            WriteLine(goal.GetDetailsString());
+            WriteLine("Press Enter to continue.");
+            foreach (Goal goal in _goals)
+            {
+                WriteLine(goal.GetDetailsString());
+            }
+            ReadLine();
+        }
+        else
+        {
+            Clear();
+            Write("\nNo goals to list. Create or load one first.");
+            timer.ShowDotsLoading(3);
         }
     }
 
@@ -275,7 +300,9 @@ public class GoalManager
     {
         if (_goals.Count == 0)
         {
-            WriteLine("No goals to record. Create one first.");
+            Clear();
+            Write("\nNo goals to record. Create or load one first.");
+            timer.ShowDotsLoading(3);
             //end method
             return;
         }
@@ -293,8 +320,10 @@ public class GoalManager
             int pointsEarned = selectedGoal.GetPoints();
             selectedGoal.RecordEvent();
             _score += pointsEarned;
+            _unsavedScore += pointsEarned;
             Clear();
-            WriteLine($"\nYou earned {pointsEarned} points! Total score: {_score}");
+            Write($"\nYou earned {pointsEarned} points! Total score: {_score} ");
+            timer.ShowDotsLoading(4);
         }
         else
         {
@@ -304,6 +333,7 @@ public class GoalManager
 
     public void SaveGoals()
     {
+        _unsavedScore = 0;
         if (_goals.Count == 0)
         {
             WriteLine("No goals to Save. Create one first.");
@@ -324,7 +354,7 @@ public class GoalManager
             if (goal is EternalGoal eternal)
             {
                 // always include
-                activeGoals.Add(eternal.GetStringRepresentation()); 
+                activeGoals.Add(eternal.GetStringRepresentation());
             }
             else if (goal.IsComplete())
             {
@@ -401,9 +431,8 @@ public class GoalManager
                     EternalGoal eternal = new EternalGoal(name, description, points);
                     eternal.SetTimesCompleted(timesCompleted);
                     _goals.Add(eternal);
-
-                    //add up points
-                    _score += eternal.GetPoints() * timesCompleted;
+                    //add points
+                    _score += timesCompleted * eternal.GetPoints();
                     break;
 
                 case "ChecklistGoal":
@@ -419,6 +448,8 @@ public class GoalManager
                     ChecklistGoal checklist = new ChecklistGoal(name, description, points, target, bonus);
                     checklist.SetAmountCompleted(amountCompleted);
                     _goals.Add(checklist);
+                    //add points
+                    _score += amountCompleted * checklist.GetPoints();
                     break;
             }//end switch
         }//end foreach loop
@@ -470,9 +501,8 @@ public class GoalManager
                     SimpleGoal simple = new SimpleGoal(name, description, points);
                     simple.SetComplete(isComplete);
                     _goals.Add(simple);
-
-                    //add up points
-                    _score += int.Parse(points);
+                    //add points
+                    _score += simple.GetPoints();
                     break;
 
                 // No eternal goals should be in this file.
@@ -491,13 +521,8 @@ public class GoalManager
                     ChecklistGoal checklist = new ChecklistGoal(name, description, points, target, bonus);
                     checklist.SetAmountCompleted(amountCompleted);
                     _goals.Add(checklist);
-
-                    //add up points
-                    _score += int.Parse(points) * amountCompleted;
-                    if (amountCompleted >= target)
-                    {
-                        _score += bonus;
-                    }
+                    //add points
+                    _score += amountCompleted * checklist.GetPoints();
                     break;
             }//end switch
         }//end foreach loop
@@ -535,7 +560,7 @@ public class GoalManager
     {
         if (_goals.Count == 0 && File.Exists("goals_backup.txt"))
         {
-            WriteLine("It looks like you have unsaved work. Restore from backup? (yes/no)");
+            Write("It looks like you have unsaved work. Restore from backup? (yes/no)");
             string choice = ReadLine().ToLower().Trim();
             if (choice == "yes")
             {
@@ -546,7 +571,7 @@ public class GoalManager
 
         if (_goals.Count == 0 && File.Exists("completed_goals_backup.txt"))
         {
-            WriteLine("Restore completed goals from backup? (yes/no)");
+            Write("Restore completed goals from backup? (yes/no)");
             string choice = ReadLine().ToLower().Trim();
             if (choice == "yes")
             {
@@ -556,4 +581,79 @@ public class GoalManager
         }//if condition is not met nothing happens
     }
 
+    public void CalculateScoreOnStart()
+    {
+        _score = 0 + _unsavedScore;
+
+        // Handle active goals
+        if (File.Exists("goals.txt"))
+        {
+            foreach (string line in File.ReadAllLines("goals.txt"))
+            {
+                AddScoreFromLine(line);
+            }
+        }
+
+        if (File.Exists("goals_backup.txt"))
+        {
+            foreach (string line in File.ReadAllLines("goals_backup.txt"))
+            {
+                AddScoreFromLine(line);
+            }
+        }
+
+        // Handle completed goals
+        if (File.Exists("completed_goals.txt"))
+        {
+            foreach (string line in File.ReadAllLines("completed_goals.txt"))
+            {
+                AddScoreFromLine(line);
+            }
+        }
+
+        if (File.Exists("completed_goals_backup.txt"))
+        {
+            foreach (string line in File.ReadAllLines("completed_goals_backup.txt"))
+            {
+                AddScoreFromLine(line);
+            }
+        }
+    }
+    
+    private void AddScoreFromLine(string line)
+{
+    string[] parts = line.Split(" - ");
+    string type = parts[0];
+
+    switch (type)
+    {
+        case "SimpleGoal":
+            bool isComplete = bool.Parse(parts[4].Split("Completed: ")[1]);
+            if (isComplete)
+            {
+                int points = int.Parse(parts[3].Split("Points: ")[1]);
+                _score += points;
+            }
+            break;
+
+        case "ChecklistGoal":
+            int checklistPoints = int.Parse(parts[3].Split("Points: ")[1]);
+            int target = int.Parse(parts[4].Split("Target: ")[1]);
+            int bonus = int.Parse(parts[5].Split("Bonus: ")[1]);
+            int completed = int.Parse(parts[6].Split("Completed: ")[1]);
+
+            _score += checklistPoints * completed;
+            if (completed >= target)
+            {
+                _score += bonus;
+            }
+            break;
+
+        case "EternalGoal":
+            int eternalPoints = int.Parse(parts[3].Split("Points: ")[1]);
+            int timesCompleted = int.Parse(parts[4].Split("Completed: ")[1]);
+            _score += eternalPoints * timesCompleted;
+            break;
+    }
+}
 }//end class

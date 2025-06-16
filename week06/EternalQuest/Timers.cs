@@ -72,7 +72,7 @@ public class Timers
         {
             loadingText += letter;
             Write(loadingText);
-            Thread.Sleep(500);
+            Thread.Sleep(250);
             Write("\r"); 
         }
     }
@@ -98,7 +98,15 @@ public class Timers
             "D",
             "I",
             "N",
-            "G"
+            "G",
+            " ",
+            "M",
+            "E",
+            "N",
+            "U",
+            ".",
+            ".",
+            "."
         };
     }
 
